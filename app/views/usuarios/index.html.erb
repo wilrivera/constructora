@@ -1,0 +1,56 @@
+<p id="notice"><%= notice %></p>
+
+    <section class="intro-single">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-12 col-lg-8">
+            <div class="title-single-box">
+              <h1 class="title-single">Relación de Usuarios</h1>
+              <span class="color-text-a">...</span>
+            </div>
+          </div>
+          <div class="col-md-12 col-lg-4">
+            <nav aria-label="breadcrumb" class="breadcrumb-box d-flex justify-content-lg-end">
+              <ol class="breadcrumb">
+                <li class="breadcrumb-item">
+                  <a href="/"><button type="button" class="btn btn-light">Inicio</button></a>
+                </li>
+                <li class="breadcrumb-item active" aria-current="page">
+                  <%= link_to 'Crear Usuario', new_usuario_path, :class => "btn btn-light" %>
+                </li>
+              </ol>
+            </nav>
+          </div>
+        </div>
+      </div>
+    </section>
+
+<table class="table">
+  <thead class="thead-dark">
+    <tr>
+      <th>DNI</th>
+      <th>Nombres</th>
+      <th>Apellidos</th>
+      <th>Perfil</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @usuarios.each do |usuario| %>
+      <tr>
+        <td><%= usuario.dni %></td>
+        <td><%= usuario.nombres %></td>
+        <td><%= usuario.apellidos %></td>         
+        <td><%= UserProfile.select(:descripcion).where("id in (" + usuario.perfil.to_s + ")").collect(&:descripcion)[0] %></td>
+
+        <td><%= link_to 'Ver', usuario %></td>
+        <td><%= link_to 'Editar', edit_usuario_path(usuario) %></td>
+        <td><%= link_to 'Eliminar', usuario, method: :delete, data: { confirm: '¿Esta seguro de eliminar el registro?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+

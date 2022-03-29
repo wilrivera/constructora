@@ -1,0 +1,39 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  supTotal: 1
+  supTechada: 1
+  banios: 1
+  estacionamiento: 1
+  banioServicio: 1
+  closet: false
+  recepcion: false
+  condominio: false
+  centroComercial: false
+  cercaColegio: false
+  parque: false
+  intercomunicador: false
+  ascensores: 1
+  ambientes: 1
+  descambientes: MyString
+  ubicacion: MyString
+  departamento: one
+
+two:
+  supTotal: 1
+  supTechada: 1
+  banios: 1
+  estacionamiento: 1
+  banioServicio: 1
+  closet: false
+  recepcion: false
+  condominio: false
+  centroComercial: false
+  cercaColegio: false
+  parque: false
+  intercomunicador: false
+  ascensores: 1
+  ambientes: 1
+  descambientes: MyString
+  ubicacion: MyString
+  departamento: two

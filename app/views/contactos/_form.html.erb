@@ -1,0 +1,73 @@
+<%= form_with(model: contacto, local: true) do |form| %>
+  <% if contacto.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(contacto.errors.count, "error") %> prohibited this contacto from being saved:</h2>
+
+      <ul>
+        <% contacto.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+<div class="row">
+  <div class="col-md-5 mb-3">
+    <div class="form-group">
+        <%= form.text_field :nombre, { :class => "form-control form-control-lg form-control-a", :placeholder => "Nombres", :required => "required"} %>     
+        <div class="valid-feedback">Valido</div>
+        <div class="invalid-feedback">Por favor ingresar Nombre</div>
+    </div>
+  </div>
+
+  <div class="col-md-7 mb-3">
+    <div class="form-group">
+        <%= form.text_field :apellido, { :class => "form-control form-control-lg form-control-a", :placeholder => "Apellidos", :required => "required"} %>
+        <div class="valid-feedback">Valido</div>
+        <div class="invalid-feedback">Por favor ingresar Apellido</div>
+    </div>
+  </div>
+
+</div>
+
+<div class="row">
+  <div class="col-md-5 mb-3">
+    <div class="form-group">
+        <%= form.text_field :telefono, { :class => "form-control form-control-lg form-control-a", :placeholder => "Teléfono" } %>
+        <div class="valid-feedback">Valido</div>
+        <div class="invalid-feedback">Por favor ingresar Teléfono</div>
+    </div>
+  </div>
+
+  <div class="col-md-7 mb-3">
+    <div class="form-group">
+        <%= form.text_field :correo, { :class => "form-control form-control-lg form-control-a", :placeholder => "E-mail", :required => "required"} %>
+        <div class="valid-feedback">Valido</div>
+        <div class="invalid-feedback">Por favor ingresar E-mail</div>
+    </div>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-md-12 mb-3">
+    <div class="form-group">
+        <%= form.text_area :mensaje, { :class => "form-control form-control-lg form-control-a", :placeholder => "Consulta", :required => "required", :rows => "4"} %>
+        <div class="valid-feedback">Valido</div>
+        <div class="invalid-feedback">Por favor ingresar Consulta</div>
+    </div>
+  </div>
+</div>
+
+
+<div class="row">
+
+  <div class="col-md-12 mb-3">
+      <div class="actions">
+          <%= form.submit "Enviar consulta", :class => "btn btn-a text-center" %>
+      </div>
+  </div>
+
+</div>
+
+<% end %>
+

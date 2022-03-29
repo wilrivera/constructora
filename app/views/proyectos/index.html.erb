@@ -1,0 +1,128 @@
+
+<section class="intro-single">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12 col-lg-8">
+        <div class="title-single-box">
+          <h1 class="title-single">Proyectos</h1>
+          <span class="color-text-a">Listado de Proyectos existentes</span>
+        </div>
+      </div>
+      <div class="col-md-12 col-lg-4">
+        <nav aria-label="breadcrumb" class="breadcrumb-box d-flex justify-content-lg-end">
+          <ol class="breadcrumb">
+            
+            <% if logged_in? %>
+            <li class="breadcrumb-item">
+              <%= link_to 'Lista Proyectos', listaproyectos_proyecto_path(@proyectos), :class => "btn btn-warning" %>
+            </li>
+            <% end %>
+
+            <% if logged_in? %>
+            <li class="breadcrumb-item active" aria-current="page">
+              <%= link_to 'Nuevo Proyecto', new_proyecto_path, :class => "btn btn-warning" %>
+            </li>
+            <% end %>
+
+          </ol>
+        </nav>
+      </div>
+    </div>
+  </div>
+</section>
+
+<p id="notice"><%= notice %></p>
+
+<div class="row">
+  <div class="col-4">
+    <%#<%= link_to 'Nuevo Proyecto', new_proyecto_path, :class=> "btn btn-warning" %>
+  </div>
+
+  <div class="col-8">    
+    <%= form_tag proyectos_path, :method => "get", :class => "form-inline" do %>
+      <div class="form-group">
+        <label>Nombre Proyecto:</label>
+        <%= text_field_tag :nombre, params[:nombre], :class => "form-control mx-sm-3" %>
+      </div>
+      <div class="form-group">
+        <label>Distrito:</label>
+        <%= text_field_tag :distrito, params[:distrito], :class => "form-control mx-sm-3" %>
+      </div>
+      <div class="form-group">
+        <%= submit_tag 'Buscar', name: nil, :class => "btn btn-success" %>
+      </div>
+    <% end %>
+    
+  </div>
+
+</div>
+
+<hr>
+
+<% if logged_in? %>
+
+<table class="table">
+  <thead class="table-success">
+    <tr>
+      <th>Nombre</th>
+      <th>Descripcion</th>
+      <th>Distrito</th>
+      <th>Ruta de imagen</th>
+      <th colspan="4"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @proyectos.each do |proyecto| %>
+      <tr>
+        <td><%= proyecto.nombre %></td>
+        <td><%= proyecto.descripcion %></td>
+        <td><%= proyecto.distrito %></td>
+        <td>/<%= proyecto.avatar_identifier %></td>
+        <td><%= link_to("Ver departamentos",  departamentos_path(:proyecto_id => proyecto.id), :class => "btn btn-outline-info btn-sm active") %></td>
+        <td><%= link_to 'Mostrar', proyecto %></td>
+        <td><%= link_to 'Editar', edit_proyecto_path(proyecto) %></td>
+        <td><%= link_to 'Eliminar', proyecto, method: :delete, data: { confirm: 'Está seguro?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+
+
+<hr>
+<br>
+<% end %>
+
+<div class="container">
+  <!-- primero queremos dividirlo en 3 para saber cuantas veces se crea -->
+  <% n = @proyectos.count/3 %>
+  <% count = 0 %>
+  <% n.downto(0) do %>
+    <!-- Creamos la fila -->
+    <div class="row">
+      <!-- Creamos maximo 3 columnas y sale -->
+      <% 2.downto(0) do |i| %>
+        <!-- Verificamos que el  count no sea mayor a la cantidad de proyectos para evitar error -->
+        <% if count == @proyectos.count %>
+          <% break %>
+        <% end %>
+        <!-- Obtenemos el proyectos que toca -->
+        <% proyectos = @proyectos[count] %>
+        <!-- Utilizamos el proyectos -->
+        <div class="card">
+          <%= image_tag(proyectos.avatar.url, style: 'height:400px;width:367px;', alt: 'Avatar') if proyectos.avatar? %>
+          <div class="card-body">      
+            <h4 class="card-title">Proyecto: <span class="color-d"><%= proyectos.nombre %> </span></h4>
+            <h5 class="card-text">Distrito: <span class="color-d"><%= proyectos.distrito %></span></h5>
+            <p class="card-text"><span class="color-d"><%= proyectos.descripcion %></span></p>
+            <%= link_to("Ver Departamentos",  departamentos_path(:proyecto_id => proyectos.id), :class => "btn btn-outline-success active") %>
+          </div>
+        </div>
+        <!-- Aumentamos la posición para que en la siguiente utilice el siguiente proyectos -->
+        <% count += 1 %>
+      <% end %>
+    </div>
+  <% end %>
+
+</div>

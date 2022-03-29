@@ -1,0 +1,40 @@
+    <section class="intro-single">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-12 col-lg-8">
+            <div class="title-single-box">
+              <h1 class="title-single">Editar detalles del Departamento : <%= @departamento.numdpto %></h1>
+             </div>
+          </div>
+          <div class="col-md-12 col-lg-4">
+            <nav aria-label="breadcrumb" class="breadcrumb-box d-flex justify-content-lg-end">
+              <ol class="breadcrumb">
+                <li class="breadcrumb-item">
+                  <a href="/">Inicio</a>
+                </li>
+                <li class="breadcrumb-item">
+                  <%= link_to 'Detalle departamentos', detalle_departamentos_path %>
+                </li>
+                <li class="breadcrumb-item active" aria-current="page">
+                  Dpto. <%= @departamento.numdpto %>
+                </li>
+              </ol>
+            </nav>
+          </div>
+        </div>
+      </div>
+    </section><!-- End Intro Single-->
+
+
+
+<%= form_for(@detalle_departamento, :url => detalle_departamento_path(:departamento_id => @departamento.id)) do |f| %>
+
+	<%= render( :partial => "form", :locals => { :f => f }) %>
+
+<% end %>
+
+<%= link_to 'Mostrar', detalle_departamentos_path(@detalle_departamento,:departamento_id => @departamento.id), :class => "btn btn-warning" %>
+
+<%= link_to 'Atrás', detalle_departamentos_path(@detalle_departamento,:departamento_id => @departamento.id), :class => "btn btn-warning" %>
+
+

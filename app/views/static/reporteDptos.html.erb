@@ -1,0 +1,51 @@
+<%= content_for :head do %>
+	<title>Listado de Dptos.</title>
+<% end %>
+
+<%= content_for :intro do %>
+	<h3>Listado de Departamentos</h3>
+<% end %>
+
+<form>
+  <div class="form-group row">  
+    <label for="staticFiltro" class="col-sm-2 col-form-label">Filtrar por</label>  
+    <div class="col-sm-10">
+    <select class="form-control">
+        <option>Disponibles</option>
+        <option>Separados</option>
+        <option>Vendidos</option>
+    </select>
+    </div>
+  </div>
+
+  <table class="table">
+  <thead>
+    <tr>
+      <th scope="col">Item</th>
+      <th scope="col">Departamento</th>
+      <th scope="col">Estado</th>
+      <th scope="col">Monto</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th scope="row">1</th>
+      <td>Dpto. Nuevo A-01</td>
+      <td>Disponible</td>
+      <td>$ 470,500.00</td>
+    </tr>
+    <tr>
+      <th scope="row">2</th>
+      <td>Dpto. Nuevo AH-12</td>
+      <td>Disponible</td>
+      <td>$ 239,000.00</td>
+    </tr>
+    <tr>
+      <th scope="row">3</th>
+      <td>Dpto. Prom H01-5</td>
+      <td>Disponible</td>
+      <td>$ 150,000.00</td>
+    </tr>
+  </tbody>
+</table>
+</form>

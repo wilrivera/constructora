@@ -1,0 +1,71 @@
+
+
+<section class="intro-single">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12 col-lg-8">
+        <div class="title-single-box">
+          <h1 class="title-single">Alumnos</h1>
+          <span class="color-text-a">Registro de alumnos:</span>
+        </div>
+      </div>
+      <div class="col-md-12 col-lg-4">
+        <nav aria-label="breadcrumb" class="breadcrumb-box d-flex justify-content-lg-end">
+          <ol class="breadcrumb">
+            <li class="breadcrumb-item">
+              <a href="/">Inicio</a>
+            </li>
+            <li class="breadcrumb-item active" aria-current="page">
+              Contactenos
+            </li>
+          </ol>
+        </nav>
+      </div>
+    </div>
+  </div>
+</section><!-- End Intro Single-->
+
+<p id="notice"><%= notice %></p>
+
+<table class="table" border="0">
+	<tr>
+	  <td>Nombres:</td>
+	  <td><%= @alumno.nombres %></td>
+	</tr>
+	<tr>
+	  <td>DNI:</td>
+	  <td><%= @alumno.dni %></td>
+	</tr>
+	<tr>
+	  <td>Email:</td>
+	  <td><%= @alumno.email %></td>
+	</tr>
+	<tr>
+	  <td>Edad:</td>
+	  <td><%= @alumno.edad %></td>
+	</tr>
+</table>
+
+<!--
+<p>
+  <strong>Nombres:</strong>
+  <%= @alumno.nombres %>
+</p>
+
+<p>
+  <strong>Dni:</strong>
+  <%= @alumno.dni %>
+</p>
+
+<p>
+  <strong>Email:</strong>
+  <%= @alumno.email %>
+</p>
+
+<p>
+  <strong>Edad:</strong>
+  <%= @alumno.edad %>
+</p>
+-->
+<%= link_to 'Edit', edit_alumno_path(@alumno), :class => "btn btn-warning"  %> |
+<%= link_to 'Back', alumnos_path, :class => "btn btn-warning"  %>

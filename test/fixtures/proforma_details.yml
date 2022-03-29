@@ -1,0 +1,17 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  proyecto: MyString
+  dpto: MyString
+  base: 1.5
+  area: 1.5
+  descuento: 1
+  total: 1.5
+
+two:
+  proyecto: MyString
+  dpto: MyString
+  base: 1.5
+  area: 1.5
+  descuento: 1
+  total: 1.5

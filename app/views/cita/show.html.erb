@@ -1,0 +1,47 @@
+<p id="notice"><%= notice %></p>
+
+<h2>Datos de la Cita:</h2>
+
+<p>
+  <strong>DNI:</strong>
+  <%= @citum.dni %>
+</p>
+
+<p>
+  <strong>Nombres:</strong>
+  <%= @citum.nombre %>
+</p>
+
+
+<p>
+  <strong>Apellidos:</strong>
+  <%= @citum.apellido %>
+</p>
+
+
+<p>
+  <strong>Email:</strong>
+  <%= @citum.email %>
+</p>
+
+
+<p>
+  <strong>Telefono:</strong>
+  <%= @citum.telefono %>
+</p>
+
+<p>
+  <strong>Fecha Cita:</strong>
+  <%= @citum.fechacita %>
+</p>
+
+<!--
+<br>
+<%= link_to 'Editar', edit_citum_path(@citum) %> |
+<%= link_to 'Atrás', cita_path, :class => "btn btn-warning"   %>
+-->
+
+
+<div class="col-1">
+	<a href="/static/departamentos"><button type="button" class="btn btn-secondary btn-lg">Ver más Departamentos</button></a>
+</div>

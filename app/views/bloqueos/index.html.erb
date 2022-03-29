@@ -1,0 +1,64 @@
+<p id="notice"><%= notice %></p>
+
+<section class="intro-single">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12 col-lg-8">
+        <div class="title-single-box">
+          <h1 class="title-single">Bloqueos</h1>
+          <h4><span class="color-text-a">... </span></h4>
+        </div>
+      </div>
+      <div class="col-md-12 col-lg-4">
+        <nav aria-label="breadcrumb" class="breadcrumb-box d-flex justify-content-lg-end">
+          <ol class="breadcrumb">
+            <li class="breadcrumb-item">
+              <%= link_to 'Link1', '/', :class => "btn btn-warning" %>
+            </li>
+            <li class="breadcrumb-item active" aria-current="page">
+              <%= link_to 'Link2', '/', :class => "btn btn-warning" %>
+            </li>
+          </ol>
+        </nav>
+      </div>
+    </div>
+  </div>
+</section>
+
+<table class="table table-hover">
+  <thead>
+    <tr>
+      <th>Nombres</th>
+      <th>Apellidos</th>
+      <th>Dni</th>
+      <th>Proyecto</th>
+      <th>Departamento</th>
+      <th>Voucher</th>
+      <th>Tipo</th>
+      <th>Monto</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @bloqueos.each do |bloqueo| %>
+      <tr>
+        <td><%= bloqueo.nombres %></td>
+        <td><%= bloqueo.apellidos %></td>
+        <td><%= bloqueo.dni %></td>
+        <td><%= bloqueo.proyecto %></td>
+        <td><%= bloqueo.departamento %></td>
+        <td><%= bloqueo.voucher %></td>
+        <td><%= bloqueo.tipo %></td>
+        <td><%= bloqueo.monto %></td>
+        <td><%= link_to 'Mostrar', bloqueo %></td>
+        <td><%= link_to 'Editar', edit_bloqueo_path(bloqueo) %></td>
+        <td><%= link_to 'Eliminar', bloqueo, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'Nuevo Bloqueo', new_bloqueo_path %>

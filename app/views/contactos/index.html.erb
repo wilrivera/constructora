@@ -1,0 +1,68 @@
+
+<%= content_for :head do %>
+<% end %>
+
+<%= content_for :intro do %>
+<% end %>
+
+<section class="intro-single">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12 col-lg-8">
+        <div class="title-single-box">
+          <h1 class="title-single">Lista de consultas</h1>
+          <span class="color-text-a">...</span>
+        </div>
+      </div>
+      <div class="col-md-12 col-lg-4">
+        <nav aria-label="breadcrumb" class="breadcrumb-box d-flex justify-content-lg-end">
+          <ol class="breadcrumb">
+            <li class="breadcrumb-item">
+              <a href="/">Inicio</a>
+            </li>
+            <li class="breadcrumb-item active" aria-current="page">
+              Contactenos
+            </li>
+          </ol>
+        </nav>
+      </div>
+    </div>
+  </div>
+</section><!-- End Intro Single-->
+
+
+<h3 id="notice"><%= notice %></h3><br>
+
+
+
+<table class="table">
+  <thead>
+    <tr>
+      <th>Nombre</th>
+      <th>Apellido</th>
+      <th>Telefono</th>
+      <th>Correo</th>
+      <th>Mensaje</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @contactos.each do |contacto| %>
+      <tr>
+        <td><%= contacto.nombre %></td>
+        <td><%= contacto.apellido %></td>
+        <td><%= contacto.telefono %></td>
+        <td><%= contacto.correo %></td>
+        <td><%= contacto.mensaje %></td>
+        <td><%= link_to 'Show', contacto %></td>
+        <td><%= link_to 'Edit', edit_contacto_path(contacto) %></td>
+        <td><%= link_to 'Destroy', contacto, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Contacto', new_contacto_path %>

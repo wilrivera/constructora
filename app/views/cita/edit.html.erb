@@ -1,0 +1,22 @@
+<h1>Administar Cita </h1>
+
+<div class="row">
+    <div class="col-7">
+      <div class="alert alert-light" role="alert">
+        Atendiendo cita: <%= @citum.dni %>
+      </div>
+    </div>
+    <div class="col-5">
+        <button type="button" class="btn btn-outline-info">Reprogramar</button>
+        <button type="button" class="btn btn-outline-info">Atendido</button>
+        <button type="button" class="btn btn-outline-info">Cancelado</button>
+    </div>
+
+</div>
+
+
+
+<%= render 'form', citum: @citum %>
+
+<%= link_to 'Mostrar', @citum %> |
+<%= link_to 'Atrás', cita_path %>

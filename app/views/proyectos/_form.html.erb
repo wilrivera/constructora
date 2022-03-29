@@ -1,0 +1,48 @@
+<%= form_with(model: proyecto, local: true) do |f| %>
+  <% if proyecto.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(proyecto.errors.count, "error") %> prohibited this proyecto from being saved:</h2>
+
+      <ul>
+        <% proyecto.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+
+
+  <div class="row">
+    <div class="offset-0 col-7">
+
+      <div class="field">
+        <%= f.label :nombre, "Nombre de proyecto:" %>
+        <%= f.text_field :nombre, { :class => "form-control", :required => "required" } %>
+      </div>
+
+      <div class="field">
+        <%= f.label :descripcion, "Características:" %>
+        <%= f.text_area :descripcion, {:class => "form-control", :rows => "5", :required => "required"} %>
+      </div>
+
+      <div class="form-group">
+        <%= f.label :avatar, "Foto del Proyecto:" %>
+        <%= image_tag(@proyecto.avatar.url, style: 'height:auto;width:300px', alt: 'Avatar') if @proyecto.avatar? %><br>
+        <%= f.file_field :avatar, accept:'image/*' %><br>
+      </div>
+
+      <div class="field">
+        <%= f.label :distrito, "Distrito:" %>
+        <%= f.text_field :distrito, {:class => "form-control", :required => "required"} %>
+      </div>
+      <br>
+      <div class="actions">
+        <%= f.submit "Guardar Proyecto", :class => "btn btn-outline-success active btn-lg" %>
+      </div>
+      <% end %>
+
+    </div>
+  </div>
+
+

@@ -1,0 +1,17 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  numdpto: 1
+  piso: 1
+  descripcion: MyText
+  precio: 9.99
+  area: 1
+  numdormitorio: 1
+
+two:
+  numdpto: 1
+  piso: 1
+  descripcion: MyText
+  precio: 9.99
+  area: 1
+  numdormitorio: 1

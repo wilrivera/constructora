@@ -1,0 +1,44 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Nombres:</strong>
+  <%= @bloqueo.nombres %>
+</p>
+
+<p>
+  <strong>Apellidos:</strong>
+  <%= @bloqueo.apellidos %>
+</p>
+
+<p>
+  <strong>Dni:</strong>
+  <%= @bloqueo.dni %>
+</p>
+
+<p>
+  <strong>Proyecto:</strong>
+  <%= @bloqueo.proyecto %>
+</p>
+
+<p>
+  <strong>Departamento:</strong>
+  <%= @bloqueo.departamento %>
+</p>
+
+<p>
+  <strong>Voucher:</strong>
+  <%= @bloqueo.voucher %>
+</p>
+
+<p>
+  <strong>Tipo:</strong>
+  <%= @bloqueo.tipo %>
+</p>
+
+<p>
+  <strong>Monto:</strong>
+  <%= @bloqueo.monto %>
+</p>
+
+<%= link_to 'Editar', edit_bloqueo_path(@bloqueo) %> |
+<%= link_to 'Atrás', bloqueos_path %>

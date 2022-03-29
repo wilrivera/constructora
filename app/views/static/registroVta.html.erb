@@ -1,0 +1,138 @@
+<%= content_for :head do %>
+<% end %>
+
+<%= content_for :intro do %>
+<% end %>
+
+    <section class="intro-single">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-12 col-lg-8">
+            <div class="title-single-box">
+              <h1 class="title-single">Registro de Venta</h1>
+              <span class="color-text-a">Por favor ingrese los datos de venta.</span>
+            </div>
+          </div>
+          <div class="col-md-12 col-lg-4">
+            <nav aria-label="breadcrumb" class="breadcrumb-box d-flex justify-content-lg-end">
+              <ol class="breadcrumb">
+                <li class="breadcrumb-item">
+                  <%= link_to 'Inicio', "/" , :class => "btn btn-light" %>
+                </li>
+                <li class="breadcrumb-item active" aria-current="page">
+                  <%= link_to 'Ventas', "#" , :class => "btn btn-light" %>
+                </li>
+              </ol>
+            </nav>
+          </div>
+        </div>
+      </div>
+    </section>
+
+<form>
+  <div class="form-group row"> 
+    <label for="staticCliente" class="col-sm-2 col-form-label">Cliente</label>  
+    <div class="col-sm-5 my-1">
+        <input type="text" class="form-control" id="txtCliente" placeholder="">        
+    </div>
+    <div class="col-auto my-1">
+        <button type="submit" class="btn btn-primary mb-2">Buscar</button>
+    </div>
+  </div>
+  <div class="form-group row"> 
+    <label for="staticFP" class="col-sm-2 col-form-label">Forma de Pago</label>  
+    <div class="col-sm-5 my-1">
+        <select class="form-control">
+            <option>Seleccionar Forma de Pago</option>
+            <option>Al Contado</option>
+            <option>Financiado</option>
+        </select>        
+    </div>
+  </div>
+  <div class="form-group row"> 
+    <label for="staticDpto" class="col-sm-2 col-form-label">Departamento</label>  
+    <div class="col-sm-5 my-1">
+        <input type="text" class="form-control" id="txtDpto" placeholder="">        
+    </div>
+    <div class="col-auto my-1">
+        <button type="submit" class="btn btn-primary mb-2">Buscar</button>
+    </div>
+  </div>
+  <div class="form-group row"> 
+    <label for="staticPrecioDpto" class="col-sm-2 col-form-label">Precio del Dpto.</label>  
+    <div class="col-sm-5 my-1">
+        <div class="input-group mb-3">
+            <div class="input-group-prepend">
+                <span class="input-group-text">$</span>
+            </div>
+            <input type="text" class="form-control" aria-label="Amount (to the nearest dollar)">
+            <div class="input-group-append">
+                <span class="input-group-text">.00</span>
+            </div>      
+        </div>
+    </div>
+  </div>
+  <div class="form-group row"> 
+    <label for="staticBanco" class="col-sm-2 col-form-label">Banco</label>  
+    <div class="col-sm-5 my-1">
+        <select class="form-control">
+            <option>Seleccionar Banco</option>
+            <option>BCP</option>
+            <option>BBVA</option>
+            <option>Interbank</option>
+            <option>Pichincha</option>
+        </select>       
+    </div>
+  </div>
+  <div class="form-group row"> 
+    <label for="staticCtaOrigen" class="col-sm-2 col-form-label">Nro. Cta. Origen</label>  
+    <div class="col-sm-5 my-1">
+        <input type="text" class="form-control" id="txtNroCtaOrgien" placeholder="">
+    </div>
+  </div>
+  <div class="form-group row"> 
+    <label for="staticMontoAbonado" class="col-sm-2 col-form-label">Monto Abonado</label>  
+    <div class="col-sm-5 my-1">
+        <div class="input-group mb-3">
+            <div class="input-group-prepend">
+                <span class="input-group-text">$</span>
+            </div>
+            <input type="text" class="form-control" aria-label="Amount (to the nearest dollar)">
+            <div class="input-group-append">
+                <span class="input-group-text">.00</span>
+            </div>      
+        </div>
+    </div>
+  </div>
+  <div class="form-group row"> 
+    <label for="staticMontoDscto" class="col-sm-2 col-form-label">Monto Dscto.</label>  
+    <div class="col-sm-5 my-1">
+      <div class="input-group mb-3">
+          <div class="input-group-prepend">
+              <span class="input-group-text">$</span>
+          </div>
+          <input type="text" class="form-control" aria-label="Amount (to the nearest dollar)">
+          <div class="input-group-append">
+              <span class="input-group-text">.00</span>
+          </div>      
+      </div>
+    </div>
+  </div>
+  <div class="form-group row"> 
+    <label for="staticMontoApagar" class="col-sm-2 col-form-label">Monto a Pagar</label>  
+    <div class="col-sm-5 my-1">
+      <div class="input-group mb-3">
+          <div class="input-group-prepend">
+              <span class="input-group-text">$</span>
+          </div>
+          <input type="text" class="form-control" aria-label="Amount (to the nearest dollar)">
+          <div class="input-group-append">
+              <span class="input-group-text">.00</span>
+          </div>      
+      </div>
+    </div>
+  </div>
+
+  <button type="submit" class="btn btn-primary">Guardar</button>
+  <button type="submit" class="btn btn-primary">Cancelar</button>
+</form>

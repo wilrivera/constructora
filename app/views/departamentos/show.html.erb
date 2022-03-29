@@ -1,0 +1,89 @@
+
+
+
+<br><br><br><br>
+
+<%= link_to("<< Volver a Departamentos", departamentos_path(:proyecto_id => @proyecto.id)) %>
+
+
+<!-- ======= Intro Single ======= -->
+<section class="intro-single">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12 col-lg-8">
+        <div class="title-single-box">
+          <h1 class="title-single">Departamento : <%= @departamento.numdpto %></h1>
+          <span class="color-text-a"><%= link_to("Ver Departamento",  detalle_departamentos_path(:departamento_id => @departamento.id), :class => "btn btn-outline-info") %></span>
+          
+        </div>
+      </div>
+      <div class="col-md-12 col-lg-4">
+        <nav aria-label="breadcrumb" class="breadcrumb-box d-flex justify-content-lg-end">
+          <ol class="breadcrumb">
+            
+            <li class="breadcrumb-item">
+              <%= link_to 'Atrás', departamentos_path(@departamento,:proyecto_id => @proyecto.id), :class => "btn btn-warning" %>
+            </li>
+            
+          </ol>
+        </nav>
+      </div>
+    </div>
+  </div>
+</section><!-- End Intro Single-->
+
+<p id="notice"><%= notice %></p>
+
+ 
+
+
+<table summary="Section form fields" class="table">
+
+  <tr>
+    <th>Piso: </th>
+    <td><%= @departamento.piso %></td>
+  </tr>
+
+  <tr>
+    <th>Descripcion:</th>
+    <td><%= @departamento.descripcion %></td>
+  </tr>
+
+  <tr>
+    <th>Precio:</th>
+    <td><%= @departamento.precio %></td>
+  </tr>
+
+  <tr>
+    <th>Area:</th>
+    <td><%= @departamento.area %></td>
+  </tr>
+
+  <tr>
+    <th>Dormitorios:</th>
+    <td><%= @departamento.numdormitorio %></td>
+  </tr>
+
+  <tr>
+    <th>Ruta de imagen:</th>
+    <td>/<%= @departamento.foto_identifier %></td>
+  </tr>
+
+  <tr>
+    <th>Imagen del Departamento:</th>
+    <td>
+      <%= image_tag(@departamento.foto.url, style: 'height:auto;width:500px;', alt: 'Foto') if @departamento.foto? %><br>
+    </td>
+  </tr>
+
+</table>
+
+<% if logged_in? %>
+
+<%= link_to 'Editar departamento', edit_departamento_path(@departamento,:proyecto_id => @proyecto.id), :class => "btn btn-outline-success active" %> 
+
+<%= link_to("Ver detalles",  detalle_departamentos_path(:departamento_id => @departamento.id), :class => "btn btn-outline-info") %>
+
+<% end %> 
+
+

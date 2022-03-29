@@ -1,0 +1,36 @@
+<section class="intro-single">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12 col-lg-8">
+        <div class="title-single-box">
+          <h1 class="title-single">Departamento : <%= @lista_departamento.numdpto %></h1>
+          <span class="color-text-a"><%= @lista_departamento.descripcion %></span>
+        </div>
+      </div>
+      <div class="col-md-12 col-lg-4">
+        <nav aria-label="breadcrumb" class="breadcrumb-box d-flex justify-content-lg-end">
+          <ol class="breadcrumb">
+            
+            <li class="breadcrumb-item active" aria-current="page">
+              <%= link_to '<< Regresar a Departamentos', lista_departamentos_path, :class => "btn btn-warning" %>
+            </li>
+          </ol>
+        </nav>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<%= form_for(@lista_departamento, :url => lista_departamento_path()) do |form| %>
+    
+    <%= render( :partial => "form", :locals => { :form => form }) %>
+    <%#<%= render 'form', lista_departamento: @lista_departamento %>
+
+<% end %>
+
+
+<%= link_to 'Mostrar', lista_departamento_path, :class => "btn btn-warning" %>
+<%= link_to 'Cancelar', lista_departamentos_path, :class => "btn btn-warning" %>
+
+

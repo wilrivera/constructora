@@ -1,0 +1,61 @@
+<!--Captura el Nombre del Proyecto en el Título-->
+
+<div class="container">
+  <div class="field">
+    <h3><%= f.label :proyecto, "Proyecto:" %>
+    <strong><%= f.object.proyecto.nombre %></strong></h3>
+  </div>
+  
+
+  <div class="row">
+    <div class="offset-0 col-7">
+
+      <div class="field">
+        <%= f.label :numdpto, "Número de departamento:"  %>
+        <%= f.number_field :numdpto, { :class => "form-control", :required => "required" } %>
+      </div>
+
+      <div class="field">
+        <%= f.label :piso, "Piso:" %>
+        <%= f.number_field :piso, { :class => "form-control", :required => "required" } %>
+      </div>
+
+      <div class="field">
+        <%= f.label :descripcion, "Características Generales:" %>
+        <%= f.text_area :descripcion, { :class => "form-control", :rows => "6", :required => "required" } %>
+      </div>
+
+      <div class="field">
+        <%= f.label :precio, "Precio $:" %>
+        <%= f.text_field :precio, { :class => "form-control", :required => "required" } %>
+      </div>
+
+      <div class="field">
+        <%= f.label :area, "Área metros cuadrados:" %>
+        <%= f.number_field :area, { :class => "form-control", :required => "required" } %>
+      </div>
+
+      <div class="field">
+        <%= f.label :numdormitorio, "Número de dormitorio:" %>
+        <%= f.number_field :numdormitorio, { :class => "form-control", :required => "required" } %>
+      </div>
+
+      <div class="form-group">
+        <%= f.label :foto, "Imagen:" %>
+        <%= image_tag(@departamento.foto.url, style: 'height:auto;width:300px', alt: 'Foto') if @departamento.foto? %><br>
+        <%= f.file_field :foto, accept:'image/*' %><br>
+      </div>
+
+
+ 
+     
+      <div class="actions">
+        <%= f.submit "Guardar departamento", :class => "btn btn-outline-success btn-lg active"  %>
+      </div>
+
+    </div>
+  </div>
+
+  
+</div>
+

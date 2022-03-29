@@ -1,0 +1,56 @@
+<p id="notice"><%= notice %></p>
+
+
+    <section class="intro-single">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-12 col-lg-8">
+            <div class="title-single-box">
+              <h1 class="title-single">Proyecto creado</h1>
+              <span class="color-text-a">A continuación revise los datos enviados.</span>
+            </div>
+          </div>
+          <div class="col-md-12 col-lg-4">
+            <nav aria-label="breadcrumb" class="breadcrumb-box d-flex justify-content-lg-end">
+              <ol class="breadcrumb">
+                <li class="breadcrumb-item">
+                  <%= link_to 'Editar', edit_proyecto_path(@proyecto), :class => "btn btn-warning" %>
+                </li>
+                <li class="breadcrumb-item active" aria-current="page">
+                  <%= link_to 'Atrás', proyectos_path, :class => "btn btn-warning" %>
+                </li>
+              </ol>
+            </nav>
+          </div>
+        </div>
+      </div>
+    </section>
+
+
+<table summary="Section form fields" class="table">
+	<tr>
+		<th>Nombre:</th>
+		<td><%= @proyecto.nombre %></td>
+	</tr>
+	<tr>
+		<th>Descripcion:</th>
+		<td><%= @proyecto.descripcion %></td>
+	</tr>
+  <tr>
+    <th>Distrito:</th>
+    <td><%= @proyecto.distrito %></td>
+  </tr>
+	<tr>
+		<th>Ruta de imagen:</th>
+		<td>/<%= @proyecto.avatar_identifier %></td>
+	</tr>
+
+	<tr>
+		<th>Imagen del Proyecto:</th>
+		<td>
+		  <%= image_tag(@proyecto.avatar.url,
+		                style: 'height:auto;width:500px;', alt: 'Avatar') if @proyecto.avatar? %><br>
+		</td>
+	</tr>
+</table>
+

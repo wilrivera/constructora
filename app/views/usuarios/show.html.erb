@@ -1,0 +1,58 @@
+<p id="notice"><%= notice %></p>
+
+    <section class="intro-single">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-12 col-lg-8">
+            <div class="title-single-box">
+              <h1 class="title-single">Usuario Creado</h1>
+              <span class="color-text-a">Por favor revise los datos del usuario</span>
+            </div>
+          </div>
+          <div class="col-md-12 col-lg-4">
+            <nav aria-label="breadcrumb" class="breadcrumb-box d-flex justify-content-lg-end">
+              <ol class="breadcrumb">
+                <li class="breadcrumb-item">
+                  <%= link_to 'Editar', edit_usuario_path(@usuario) , :class => "btn btn-light" %>
+                </li>
+                <li class="breadcrumb-item active" aria-current="page">
+                  <%= link_to 'Atrás', usuarios_path , :class => "btn btn-light" %>
+                </li>
+              </ol>
+            </nav>
+          </div>
+        </div>
+      </div>
+    </section>
+
+<br/>
+
+<h2>
+  <strong>DNI: </strong>
+  <%= @usuario.dni %>
+</h2>
+
+<h2>
+  <strong>Nombres: </strong>
+  <%= @usuario.nombres %>
+</h2>
+
+<h2>
+  <strong>Apellidos: </strong>
+  <%= @usuario.apellidos %>
+</h2>
+
+<h2>
+  <strong>Perfil: </strong>
+  <td><%= UserProfile.select(:descripcion).where("id in (" + @usuario.perfil.to_s + ")").collect(&:descripcion)[0] %></td>
+</h2>
+
+<h2>
+  <strong>Correo: </strong>
+  <%= @usuario.email %>
+</h2>
+
+<br/>
+
+   
+

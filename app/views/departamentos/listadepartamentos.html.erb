@@ -1,0 +1,89 @@
+   <section class="intro-single">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-12 col-lg-8">
+            <div class="title-single-box">
+              <h1 class="title-single">Listado de Departamentos</h1>
+              <span class="color-text-a">...</span>
+            </div>
+          </div>
+          <div class="col-md-12 col-lg-4">
+            <nav aria-label="breadcrumb" class="breadcrumb-box d-flex justify-content-lg-end">
+              <ol class="breadcrumb">
+                <li class="breadcrumb-item">
+                  <%= link_to 'Departamentos', departamentos_path(:proyecto_id => @proyecto.id), :class=> "btn btn-warning" %>
+                </li>
+              </ol>
+            </nav>
+          </div>
+        </div>
+      </div>
+    </section>  
+    
+<p id="notice"><%= notice %></p>
+
+<div class="row">
+  <div class="col-4">
+    <%= link_to 'Nuevo Departamento', new_departamento_path(:proyecto_id => @proyecto.id), :class=> "btn btn-warning" %>
+  </div>
+
+  <div class="col-8" align="center">    
+    <%= form_tag proyectos_path, :method => "get", :class => "form-inline" do %>
+      <div class="form-group">
+        <label>Nombre Proyecto:</label>
+        <%= text_field_tag :nombre, params[:nombre], :class => "form-control mx-sm-3" %>
+      </div>
+      <div class="form-group">
+        <label>Distrito:</label>
+        <%= text_field_tag :distrito, params[:distrito], :class => "form-control mx-sm-3" %>
+      </div>
+      <div class="form-group">
+        <%= submit_tag 'Buscar', name: nil, :class => "btn btn-success" %>
+      </div>
+    <% end %>
+    
+  </div>
+
+</div>
+
+
+    <table class="table">
+      <thead>
+        <tr>
+          <th>Numero Dpto.</th>
+          <th>Piso</th>
+          <th>Características</th>
+          <th>Precio</th>
+          <th>Area</th>
+          <th>Dormitorios</th>
+          <th>Proyecto</th>
+          <th>Ruta de imagen</th>
+          <th>Detalles departamento</th>
+          <th colspan="4">Accones</th>
+        </tr>
+      </thead>
+
+      <tbody>
+
+        <% @departamentos.each do |departamento| %>
+          <tr>
+            <td><%= departamento.numdpto %></td>
+            <td><%= departamento.piso %></td>
+            <td><%= departamento.descripcion %></td>
+            <td><%= departamento.precio %></td>
+            <td><%= departamento.area %></td>
+            <td><%= departamento.numdormitorio %></td>
+            <td><%= departamento.proyecto.nombre %></td>
+            <td><%= departamento.foto_identifier %></td>
+            <td><%= link_to("Ver detalles",  detalle_departamentos_path(:departamento_id => departamento.id), :class => "btn btn-outline-info btn-sm") %> </td>
+            <td><%= link_to("Agregar Detalles",  new_detalle_departamento_path(:departamento_id => departamento.id)) %></td>
+            <td><%= link_to('Mostrar', departamento_path(departamento,:proyecto_id => @proyecto.id)) %></td>
+        
+            <td><%= link_to('Editar', edit_departamento_path(departamento,:proyecto_id => @proyecto.id)) %></td>
+
+            <td><%= link_to('Eliminar', departamento_path(departamento,:proyecto_id => @proyecto.id), method: :delete, data: { confirm: 'Está seguro?' }) %></td>
+          </tr>
+        <% end %>
+        
+      </tbody>
+    </table>

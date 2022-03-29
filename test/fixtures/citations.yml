@@ -1,0 +1,17 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  dni: MyString
+  nombre: MyString
+  apellido: MyString
+  email: MyString
+  telefono: MyString
+  fechacita: 2020-09-13
+
+two:
+  dni: MyString
+  nombre: MyString
+  apellido: MyString
+  email: MyString
+  telefono: MyString
+  fechacita: 2020-09-13

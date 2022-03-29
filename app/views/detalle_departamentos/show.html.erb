@@ -1,0 +1,338 @@
+
+
+
+
+
+
+<p id="notice"><%= notice %></p>
+
+
+<!-- ======= Intro Single ======= -->
+<section class="intro-single">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12 col-lg-8">
+        <div class="title-single-box">
+          <h1 class="title-single">Departamento : <%= @departamento.numdpto %></h1>
+          <h3 class="title-single">Proyecto : <%= @departamento.proyecto.nombre %></h3>
+          <span class="color-text-a"><%= @detalle_departamento.ubicacion %></span>
+        </div>
+      </div>
+      <div class="col-md-12 col-lg-4">
+        <nav aria-label="breadcrumb" class="breadcrumb-box d-flex justify-content-lg-end">
+          <ol class="breadcrumb">
+             <li class="breadcrumb-item">
+              <%= link_to 'Editar', edit_detalle_departamento_path(@detalle_departamento,:departamento_id => @departamento.id), :class => "btn btn-warning" %> 
+            </li>
+            <li class="breadcrumb-item">
+              <%= link_to image_tag('img/reserva-cita.png', style: 'height:100px;width:200px;'), '/citations/new'%>
+            </li>
+            
+          </ol>
+        </nav>
+      </div>
+    </div>
+  </div>
+</section><!-- End Intro Single-->
+
+
+
+   <section class="property-single nav-arrow-b">
+      <div class="container">
+        <div class="row">
+          <div class="col-sm-12">
+
+
+            <p>
+            <strong>Fotos:</strong>
+              <% if @detalle_departamento.fotos? %>
+                <ul class="list">
+                  <% @detalle_departamento.fotos.each do |foto| %>
+                    <%= link_to(image_tag(foto.url, alt: 'Foto',:size => "200x200"), foto.url, target: '_blank') %>
+                  <% end %>
+                </ul>
+              <% end %>
+          </p>
+
+            <!--
+            <div id="property-single-carousel" class="owl-carousel">
+              <div class="carousel-item-b">
+                <%= image_tag(@detalle_departamento.fotos[0].url, alt: 'Foto',:size => "200x200") %>
+              </div>
+              <div class="carousel-item-b">
+                <%= image_tag(@detalle_departamento.fotos[1].url, alt: 'Foto',:size => "200x200") %>
+              </div>
+              <div class="carousel-item-b">
+                <%= image_tag(@detalle_departamento.fotos[2].url, alt: 'Foto',:size => "200x200") %>
+              </div>
+            </div>
+              -->
+
+            <div class="row justify-content-between">
+              <div class="col-md-5 col-lg-4">
+                <div class="property-price d-flex justify-content-center foo">
+                  <div class="card-header-c d-flex">
+                    <div class="card-box-ico">
+                      <span class="ion-money">$</span>
+                    </div>
+                    <div class="card-title-c align-self-center">
+                      <h5 class="title-c"><%= @departamento.precio %></h5>
+                    </div>
+                  </div>
+                </div>
+                <div class="property-summary">
+                  <div class="row">
+                    <div class="col-sm-12">
+                      <div class="title-box-d section-t4">
+                        <h3 class="title-d">Características generales</h3>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="summary-list">
+                    <ul class="list">
+                      <li class="d-flex justify-content-between">
+                        <strong>Departamento ID:</strong>
+                        <span><%= @departamento.id %></span>
+                      </li>
+                      <li class="d-flex justify-content-between">
+                        <strong>Dirección:</strong>
+                        <span><%= @detalle_departamento.ubicacion %></span>
+                      </li>
+                      <li class="d-flex justify-content-between">
+                        <strong>Tipo de Propiedad:</strong>
+                        <% if @detalle_departamento.condominio %>
+                            <span>Condominio</span>
+                        <% else %>
+                            <span>Casa</span>
+                        <% end %>
+                     </li>
+                      <li class="d-flex justify-content-between">
+                        <strong>Estado:</strong>
+                        <span>''</span>
+                      </li>
+                      <li class="d-flex justify-content-between">
+                        <strong>Area:</strong>
+                        <span><%= @detalle_departamento.supTotal %>m
+                          <sup>2</sup>
+                        </span>
+                      </li>
+                      <li class="d-flex justify-content-between">
+                        <strong>Ambientes:</strong>
+                        <span><%= @detalle_departamento.ambientes %></span>
+                      </li>
+                      <li class="d-flex justify-content-between">
+                        <strong>Baños:</strong>
+                        <span><%= @detalle_departamento.banios %></span>
+                      </li>
+                      <li class="d-flex justify-content-between">
+                        <strong>Garage:</strong>
+                        <span><%= @detalle_departamento.estacionamiento %></span>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+
+              <div class="col-md-7 col-lg-7 section-md-t3">
+                <div class="row">
+                  <div class="col-sm-12">
+                    <div class="title-box-d">
+                      <h3 class="title-d">Descripcion de la propiedad</h3>
+                    </div>
+                  </div>
+                </div>
+                <div class="property-description">
+                  <p class="description color-text-a">
+                    <%= @departamento.descripcion %>
+                  </p>
+                  <p class="description color-text-a no-margin">
+                    Cuenta con <%= @detalle_departamento.descambientes %>
+                  </p>
+                </div>
+
+                <div class="row section-t3">
+                  <div class="col-sm-12">
+                    <div class="title-box-d">
+                      <h3 class="title-d">Servicios</h3>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="amenities-list color-text-a">
+                  <ul class="list-a no-margin">
+                    
+                    <% if @detalle_departamento.closet %>
+                      <li> <span>Closet</span> </li>
+                    <% end %>
+
+                    <% if @detalle_departamento.recepcion %>
+                      <li> <span>Recepcion</span> </li>
+                    <% end %>
+
+                    <% if @detalle_departamento.condominio %>
+                      <li> <span>Condominio</span> </li>
+                    <% end %>
+                    
+                    <% if @detalle_departamento.centroComercial %>
+                      <li> <span>Cerca Centro Comercial</span> </li>
+                    <% end %>
+
+                    <% if @detalle_departamento.cercaColegio %>
+                      <li> <span>Cerca Colegio</span> </li>
+                    <% end %>
+
+                    <% if @detalle_departamento.parque %>
+                      <li> <span>Tiene Parque</span> </li>
+                    <% end %>
+
+                     <% if @detalle_departamento.intercomunicador %>
+                      <li> <span>Intercomunicador</span> </li>
+                    <% end %>
+
+                    <% if @detalle_departamento.ascensores != 0  %>
+                      <li> <span>Ascensores: <%= @detalle_departamento.ascensores %> </span> </li>
+                    <% end %>
+
+                    <% if @detalle_departamento.banioServicio != 0  %>
+                      <li> <span>Baño Servicio: <%= @detalle_departamento.banioServicio %> </span> </li>
+                    <% end %>
+
+                 
+                  </ul>
+                </div>
+
+                <div class="row section-t3">
+                  <div class="col-sm-12">
+                    <div class="title-box-d">
+                      <h3 class="title-d">Ambientes</h3>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="amenities-list color-text-a">
+                  <ul class="list-a no-margin">
+                    <%= @detalle_departamento.descambientes %>
+                  </ul>
+                </div>
+
+
+
+
+              </div>
+            </div>
+
+
+          </div>
+          
+          <div class="col-md-10 offset-md-1">
+            <ul class="nav nav-pills-a nav-pills mb-3 section-t3" id="pills-tab" role="tablist">
+              <li class="nav-item">
+                <a class="nav-link active" id="pills-video-tab" data-toggle="pill" href="#pills-video" role="tab" aria-controls="pills-video" aria-selected="true">Video</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" id="pills-plans-tab" data-toggle="pill" href="#pills-plans" role="tab" aria-controls="pills-plans" aria-selected="false">Planos</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" id="pills-map-tab" data-toggle="pill" href="#pills-map" role="tab" aria-controls="pills-map" aria-selected="false">Mapa</a>
+              </li>
+            </ul>
+            <div class="tab-content" id="pills-tabContent">
+              <div class="tab-pane fade show active" id="pills-video" role="tabpanel" aria-labelledby="pills-video-tab">
+                
+                  <div style="padding:56.25% 0 0 0;position:relative;">
+                  <iframe src="https://player.vimeo.com/video/73221098?autoplay=1&byline=0" style="position:absolute;top:0;left:0;width:100%;height:100%;" frameborder="0" allow="autoplay; fullscreen" allowfullscreen>
+                  </iframe>
+                  </div>
+                  <script src="https://player.vimeo.com/api/player.js"></script>
+
+
+              </div>
+              <div class="tab-pane fade" id="pills-plans" role="tabpanel" aria-labelledby="pills-plans-tab">
+              <%= image_tag('img/plan2.jpg', style: 'height:460px;width:100%;', alt: 'Avatar') %>
+               </div>
+              <div class="tab-pane fade" id="pills-map" role="tabpanel" aria-labelledby="pills-map-tab">
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3022.1422937950147!2d-73.98731968482413!3d40.75889497932681!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c25855c6480299%3A0x55194ec5a1ae072e!2sTimes+Square!5e0!3m2!1ses-419!2sve!4v1510329142834" width="100%" height="460" frameborder="0" style="border:0" allowfullscreen></iframe>
+              </div>
+            </div>
+          </div>
+
+
+          
+          <div class="col-md-12">
+            <div class="row section-t3">
+              <div class="col-sm-12">
+                <div class="title-box-d">
+                  <h3 class="title-d"><a href="/citations/new" >Contacte con tu Agente</a></h3>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-6 col-lg-4">
+                  <%= image_tag('img/agent-4.jpg', style: 'height:400px;width:100%;', alt: 'Avatar') %>
+              </div>
+              <div class="col-md-6 col-lg-6">
+                <div class="property-agent">
+                  <h4 class="title-agent">Angelo Yenque</h4>
+                  <p class="color-text-a">
+                    Gracias a mis años de trabajo en la industria farmacéutica, me encuentro muy familiarizada con los productos y las marcas del sector.
+                     Asimismo, mis habilidades de negociación y de trato con el cliente me llevaron a duplicar la cartera de clientes de mi actual puesto y 
+                     a superar mis objetivos de venta anuales en un 15%. De la misma forma, mis capacidad de liderazgo me ha llevado a coordinar un equipo de 3 vendedores, 
+                     los cuales han incrementado sus ventas mensuales en un 5% durante el último cuatrimestre.
+                  </p>
+                  
+                  <ul class="list-unstyled">
+                    <li class="d-flex justify-content-between">
+                      <strong>Telefono:</strong>
+                      <span class="color-text-a">+51 91265897</span>
+                    </li>
+                    <li class="d-flex justify-content-between">
+                      <strong>Email:</strong>
+                      <span class="color-text-a">ayenque@homeagency.com</span>
+                    </li>
+                    <li class="d-flex justify-content-between">
+                      <strong>URL:</strong>
+                      <span class="color-text-a"><a href="http://ayenque.page/">ayenque.page</a></span>
+                    </li>
+                  </ul>
+                  <div class="socials-a">
+                    <ul class="list-inline">
+                      <li class="list-inline-item">
+                        <a href="#">
+                          <i class="fa fa-facebook" aria-hidden="true"></i>
+                        </a>
+                      </li>
+                      <li class="list-inline-item">
+                        <a href="#">
+                          <i class="fa fa-twitter" aria-hidden="true"></i>
+                        </a>
+                      </li>
+                      <li class="list-inline-item">
+                        <a href="#">
+                          <i class="fa fa-instagram" aria-hidden="true"></i>
+                        </a>
+                      </li>
+                      <li class="list-inline-item">
+                        <a href="#">
+                          <i class="fa fa-pinterest-p" aria-hidden="true"></i>
+                        </a>
+                      </li>
+                      <li class="list-inline-item">
+                        <a href="#">
+                          <i class="fa fa-dribbble" aria-hidden="true"></i>
+                        </a>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+
+             </div>
+          </div>
+        </div>
+      </div>
+    </section><!-- End Property Single-->
+<br><br>
+<center>
+<%= link_to image_tag('img/reservatucita.png', style: 'height:400px;width:900px;'), '/citations/new'%>
+
+</center>

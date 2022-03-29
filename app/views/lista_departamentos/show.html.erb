@@ -1,0 +1,84 @@
+<!-- ======= Intro Single ======= -->
+<section class="intro-single">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12 col-lg-8">
+        <div class="title-single-box">
+          <h1 class="title-single">Departamento : <%= @lista_departamento.numdpto %></h1>
+          <span class="color-text-a"><%= link_to("Ver Departamento",  detalle_departamentos_path(:departamento_id => @lista_departamento.id), :class => "btn btn-outline-info") %></span>
+        </div>
+      </div>
+      <div class="col-md-12 col-lg-4">
+        <nav aria-label="breadcrumb" class="breadcrumb-box d-flex justify-content-lg-end">
+          <ol class="breadcrumb">
+            
+            <li class="breadcrumb-item">
+              <%#<%= link_to 'Atrás', departamentos_path(@departamento,:proyecto_id => @proyecto.id), :class => "btn btn-warning" %>
+            </li>
+            
+          </ol>
+        </nav>
+      </div>
+    </div>
+  </div>
+</section><!-- End Intro Single-->
+
+<h3 id="notice"><%= notice %></h3><br>
+
+
+<table summary="Section form fields" class="table">
+  <%#Se trae el nombre de la tabla relacionada%>
+  <tr>
+    <th>Proyecto:</th>
+    <td><%= Proyecto.select(:nombre).where("id = " + @lista_departamento.proyecto_id.to_s).collect(&:nombre)[0] %></td>
+  </tr>
+
+  <tr>
+    <th>Numero Dpto:</th>
+    <td><%= @lista_departamento.numdpto %></td>
+  </tr>
+
+  <tr>
+    <th>Piso: </th>
+    <td><%= @lista_departamento.piso %></td>
+  </tr>
+
+  <tr>
+    <th>Descripcion:</th>
+    <td><%= @lista_departamento.descripcion %></td>
+  </tr>
+
+  <tr>
+    <th>Precio:</th>
+    <td><%= @lista_departamento.precio %></td>
+  </tr>
+
+  <tr>
+    <th>Area:</th>
+    <td><%= @lista_departamento.area %></td>
+  </tr>
+
+  <tr>
+    <th>Dormitorios:</th>
+    <td><%= @lista_departamento.numdormitorio %></td>
+  </tr>
+
+  <tr>
+    <th>Ruta de imagen:</th>
+    <td>/<%= @lista_departamento.foto_identifier %></td>
+  </tr>
+
+  <tr>
+    <th>Imagen del Proyecto:</th>
+    <td>
+      <%= image_tag(@lista_departamento.foto.url, style: 'height:auto;width:500px;', alt: 'Foto') if @lista_departamento.foto? %><br>
+    </td>
+  </tr>
+
+
+</table>
+
+<%= link_to 'Editar', edit_lista_departamento_path, :class => "btn btn-warning"  %> |
+<%= link_to 'Atrás', lista_departamentos_path, :class => "btn btn-warning"  %>
+
+<%#<%= link_to 'Editar departamento', edit_departamento_path(@departamento,:proyecto_id => @proyecto.id), :class => "btn btn-outline-success active" %> 

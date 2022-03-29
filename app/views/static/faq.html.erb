@@ -1,0 +1,53 @@
+<%= content_for :head do %>
+	<title>Login</title>
+<% end %>
+
+<%= content_for :intro do %>
+	
+
+
+<br><br><br><br>
+
+
+<div class="container">
+    <%= yield :intro %>
+    <% flash.each do |message_type, message| %>
+        <div class="alert alert-<%= message_type %>"><%= message %></div>
+    <% end %>
+    <%= yield %>
+</div>
+
+<div class="row">
+    <div class="offset-4 col-4">
+
+        <div class="card">
+            <h4 align="center">Iniciar Sesión</h4>
+            <div class="card-body">
+                <p>Ingrese sus credenciales:</p>
+                <%= form_for :session, :html => { :method => :post, :class => "needs-validation", :novalidate => "novalidate" }, url: login_path do |f| %>
+                    <div class="form-group">
+                        <%= f.text_field :email, { :class => "form-control", :placeholder => "Correo", :required => "required" } %>
+                    </div>
+                    <div class="form-group">
+                        <%= f.text_field :password, { :type => "password", :class => "form-control", :placeholder => "Contraseña", :required => "required" } %>
+                    </div>
+                    <div class="form-group">
+                        <%= f.submit "Ingresar", :class => "btn btn-primary" %>
+                    </div>            
+                <% end %>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="offset-4 col-4">
+        <nav class="nav">
+            <a class="nav-link" href="/usuarios/new">Crear Usuario</a>
+        </nav>
+    </div>
+</div>
+
+
+<% end %>
+

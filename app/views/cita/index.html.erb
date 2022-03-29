@@ -1,0 +1,47 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Citas</h1>
+
+<div class="row">
+  <div class="col-9">
+      <a href = "/"> <button type="button" class="btn btn-outline-secondary">Nuevo</button></a>
+      <a href = "/"><button type="button" class="btn btn-outline-secondary">Otro</button></a>
+  </div>
+</div>
+<br>
+
+<table class="table table-hover">
+  <thead>
+    <tr>
+      <th>DNI</th>
+      <th>Nombre</th>
+      <th>Apellido</th>
+      <th>Email</th>
+      <th>Telefono</th>
+      <th>Fecha Cita</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @cita.each do |citum| %>
+      <tr>
+        <td><%= citum.dni %></td>
+        <td><%= citum.nombre %></td>
+        <td><%= citum.apellido %></td>
+        <td><%= citum.email %></td>
+        <td><%= citum.telefono %></td>
+        <td><%= citum.fechacita %></td>
+        <td><%= link_to 'Ver Detalles', citum %></td>
+        <td><%= link_to 'Registrar Atención', edit_citum_path(citum) %></td>
+        <td><%= link_to 'Eliminar', citum, method: :delete, data: { confirm: 'Seguro de eliminar los datos?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<!--
+<%= link_to 'Nueva Cita', new_citum_path %>
+-->

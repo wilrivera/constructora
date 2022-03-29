@@ -1,0 +1,82 @@
+<section class="intro-single">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-12 col-lg-8">
+            <div class="title-single-box">
+              <h1 class="title-single">Bloqueo de Departamento</h1>
+              <span class="color-text-a">Ingrese la información necesaria para bloquear un departamento.</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+        <!--<link rel="canonical" href="https://getbootstrap.com/docs/4.0/examples/checkout/">#-->
+
+    <!-- Bootstrap core CSS -->
+    <link href="../../dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="form-validation.css" rel="stylesheet">
+  </head>
+
+
+
+<%= form_with(model: bloqueo, local: true) do |form| %>
+  <% if bloqueo.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(bloqueo.errors.count, "error") %> prohibited this bloqueo from being saved:</h2>
+
+      <ul>
+        <% bloqueo.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :nombres %>
+    <%= form.text_field :nombres, { :class => "form-control" } %>
+    <!--<input type="text" class="form-control" id="firstName" placeholder="" value="" required>-->
+  </div>
+
+  <div class="field">
+    <%= form.label :apellidos %>
+    <%= form.text_field :apellidos, { :class => "form-control" }  %>
+  </div>
+
+  <div class="field">
+    <%= form.label :dni %>
+    <%= form.text_field :dni, { :class => "form-control" }  %>
+  </div>
+
+  <div class="field">
+    <%= form.label :proyecto %>
+    <%= form.number_field :proyecto, { :class => "form-control" }  %>
+  </div>
+
+  <div class="field">
+    <%= form.label :departamento %>
+    <%= form.number_field :departamento, { :class => "form-control" }  %>
+  </div>
+
+  <div class="field">
+    <%= form.label :voucher %>
+    <%= form.text_field :voucher, { :class => "form-control" } %>
+  </div>
+
+  <div class="field">
+    <%= form.label :tipo %>
+    <%= form.text_field :tipo, { :class => "form-control" }  %>
+  </div>
+
+  <div class="field">
+    <%= form.label :monto %>
+    <%= form.number_field :monto, { :class => "form-control" }  %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit "Guardar", :class => "btn btn-success" %>
+  </div>
+<% end %>

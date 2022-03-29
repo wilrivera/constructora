@@ -1,0 +1,168 @@
+<p id="notice"><%= notice %></p>
+
+
+    <section class="intro-single">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-12 col-lg-8">
+            <div class="title-single-box">
+              <h1 class="title-single">Listado de Citas</h1>
+              <span class="color-text-a">A continuación las listas generadas a hoy.</span>
+            </div>
+          </div>
+          <div class="col-md-12 col-lg-4">
+            <nav aria-label="breadcrumb" class="breadcrumb-box d-flex justify-content-lg-end">
+              <ol class="breadcrumb">
+                 <li class="breadcrumb-item active" aria-current="page">
+                  <%= link_to 'Nueva Cita', new_citation_path , :class => "btn btn-light" %>
+                </li>
+              </ol>
+            </nav>
+          </div>
+        </div>
+      </div>
+    </section>
+
+
+ <% if logged_in? && current_user.perfil == '1' %>
+
+    <div class="row">
+      <div class="col-2">
+        <%# <%= link_to 'Nuevo Proyecto', new_proyecto_path, :class=> "btn btn-warning" %>
+      </div>
+
+      <div class="col-12" align="right">    
+        <%= form_tag citations_path, :method => "get", :class => "form-inline" do %>
+
+          <div class="form-group">
+            <label>Buscar por DNI:</label>
+            <%= number_field_tag :dni, params[:dni], :class => "form-control mx-sm-3" %>
+          </div>
+
+          <div class="form-group">
+            <label>Buscar por Nombre:</label>
+            <%= text_field_tag :nombre, params[:nombre], :class => "form-control mx-sm-3" %>
+          </div>
+
+           <div class="form-group">
+              <label>Buscar por Agente:</label>
+              <%= text_field_tag :agente, params[:agente], :class => "form-control mx-sm-3" %>
+            </div>
+
+          
+          <div class="form-group">
+            <%= submit_tag 'Buscar', name: nil, :class => "btn btn-success" %>
+          </div>
+
+
+        <% end %>
+
+
+ 
+        
+      </div>
+    </div>
+
+<% end %>
+
+
+<br><br><br>
+
+<table class="table table-hover table-bordered">
+  <thead>
+    <tr>
+      <th>DNI</th>
+      <th>Nombre</th>
+      <th>Apellido</th>
+      <th>Email</th>
+      <th>Telefono</th>
+      <th>Fecha Cita</th>
+      <th>Agente</th>
+      <th>Mensaje Contacto</th>
+      <th colspan="3"><center>Acciones</center></th>
+    </tr>
+  </thead>
+
+
+  <tbody>
+    <% @citations.each do |citation| %>
+      <tr>
+        <td><%= citation.dni %></td>
+        <td><%= citation.nombre %></td>
+        <td><%= citation.apellido %></td>
+        <td><%= citation.email %></td>
+        <td><%= citation.telefono %></td>
+        <td><%= citation.fechacita %></td>
+        <td><%= Usuario.select(:nombres).where("id in (" + citation.agente.to_s + ")").collect(&:nombres)[0] %></td>
+        <td>
+        <!-- Button trigger modal -->
+          <button type="button" class="btn btn-light" data-toggle="modal" data-target="#exampleModalCenter">
+            Ver Mensaje
+          </button>
+
+          <!-- Modal -->
+          <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title">Mensaje</h5>
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+                <div class="modal-body">
+                  <%= citation.mensaje %>
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </td>
+        <td><%= link_to '', show_user_citation_path(citation) , class: "fa fa-info-circle" %></td> 
+        <td><%= link_to '', edit_citation_path(citation) , class: "fa fa-pencil-square-o" %></td>
+        <td><%= link_to '', citation, method: :delete, data: { confirm: 'Estas seguro de eliminar la cita?' }, class: "fa fa-trash" %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+
+
+<!-- 
+
+<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter2">
+  
+</button>
+
+
+<div class="modal fade" id="exampleModalCenter2" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenter2Title" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModal2LongTitle">Eliminar Cita</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        Estas seguro de eliminar la cita?
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+        <button type="button" class="btn btn-primary">Aceptar</button>
+      </div>
+    </div>
+  </div>
+</div>
+-->
+
+
+
+
+
+
+
+

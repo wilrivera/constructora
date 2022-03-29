@@ -1,0 +1,70 @@
+<%= content_for :head do %>
+	<title>Login</title>
+<% end %>
+
+<%= content_for :intro do %>
+	
+
+    <section class="intro-single">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-12 col-lg-8">
+            <div class="title-single-box">
+              <h1 class="title-single">Ingresar al sistema</h1>
+              <span class="color-text-a">Por favor ingresar sus credenciales:</span>
+            </div>
+          </div>
+          <div class="col-md-12 col-lg-4">
+            <nav aria-label="breadcrumb" class="breadcrumb-box d-flex justify-content-lg-end">
+              <ol class="breadcrumb">
+                <li class="breadcrumb-item">
+                    <a class="btn btn-warning" href="/">Inicio</a>
+                </li>
+                 <li class="breadcrumb-item">
+                    <a class="btn btn-warning" href="/proyectos">Proyectos</a>
+                </li>
+              </ol>
+            </nav>
+          </div>
+        </div>
+      </div>
+    </section>
+
+
+
+<div class="row">
+    <div class="offset-4 col-4">
+
+        <div class="card">
+            <div class="card-body">
+                <p>Ingrese sus credenciales:</p>
+                <%= form_for :session, :html => { :method => :post, :class => "needs-validation", :novalidate => "novalidate" }, url: login_path do |f| %>
+                    <div class="form-group">
+                        <%= f.text_field :email, { :class => "form-control", :placeholder => "Correo", :required => "required" } %>
+                    </div>
+                    <div class="form-group">
+                        <%= f.text_field :password, { :type => "password", :class => "form-control", :placeholder => "Contraseña", :required => "required" } %>
+                    </div>
+                    <div class="form-group">
+                        <%= f.submit "Ingresar", :class => "btn btn-primary" %>
+                    </div>            
+                <% end %>
+            </div>
+        </div>
+    </div>
+</div>
+
+<% if logged_in? and session[:usuario_perfil] == '1' %>
+    <div class="row">
+        <div class="offset-4 col-4">
+            <nav class="nav">
+                <a class="nav-link" href="/usuarios/new">Crear Usuario</a>
+            </nav>
+        </div>
+    </div>
+<% end %>
+
+<% end %>
+
+
+

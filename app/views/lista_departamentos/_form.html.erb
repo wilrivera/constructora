@@ -1,0 +1,78 @@
+
+  <% if @lista_departamento.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@lista_departamento.errors.count, "error") %> prohibited this lista_departamento from being saved:</h2>
+
+      <ul>
+        <% @lista_departamento.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+
+
+ 
+
+  <div class="row">
+    <div class="offset-0 col-7">
+
+      <%# Mostrar los proyectos en un combo %>
+      <div class="field">
+        <%= form.label :proyecto_id %>
+        <%= form.select :proyecto_id, Proyecto.all.collect {|e| [e.nombre, e.id] } , { :include_blank => "Seleccione" }, { :class => "form-control" } %>
+      </div>
+
+      <div class="field">
+        <%= form.label :numdpto, "Número de departamento:"  %>
+        <%= form.number_field :numdpto, { :class => "form-control", :required => "required" } %>
+      </div>
+
+      <div class="field">
+        <%= form.label :piso, "Piso:" %>
+        <%= form.number_field :piso, { :class => "form-control", :required => "required" } %>
+      </div>
+
+      <div class="field">
+        <%= form.label :descripcion, "Características Generales:" %>
+        <%= form.text_area :descripcion, { :class => "form-control", :rows => "6", :required => "required" } %>
+      </div>
+
+      <div class="field">
+        <%= form.label :precio, "Precio $:" %>
+        <%= form.text_field :precio, { :class => "form-control", :required => "required" } %>
+      </div>
+
+      <div class="field">
+        <%= form.label :area, "Área metros cuadrados:" %>
+        <%= form.number_field :area, { :class => "form-control", :required => "required" } %>
+      </div>
+
+      <div class="field">
+        <%= form.label :numdormitorio, "Número de dormitorio:" %>
+        <%= form.number_field :numdormitorio, { :class => "form-control", :required => "required" } %>
+      </div>
+
+      <div class="form-group">
+        <%= form.label :foto, "Imagen:" %>
+        <%= image_tag(@lista_departamento.foto.url, style: 'height:auto;width:300px', alt: 'Foto') if @lista_departamento.foto? %><br>
+        <%= form.file_field :foto, accept:'image/*' %><br>
+      </div>
+
+      
+      
+      <%#
+      <div class="field">
+        <%= form.label :proyecto_id, "Id Proyecto:" %>
+        <%#<%= form.number_field :proyecto_id, { :class => "form-control" } %>
+      <%#</div>%>
+     
+      <div class="actions">
+        <%= form.submit "Guardar departamento", :class => "btn btn-outline-success btn-lg active"  %>
+      </div>
+
+    </div>
+  </div>
+
+

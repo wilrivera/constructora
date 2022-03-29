@@ -1,0 +1,58 @@
+<%= content_for :head do %>
+	<title>Departamentos</title>
+<% end %>
+
+<%= content_for :intro do %>
+	
+<% end %>
+<br>
+<h4 class="mb-3">Búsqueda de Departamentos</h4>
+
+<form class="needs-validation" novalidate>
+    <div class="row">
+      <div class="col-md-4 mb-3">
+        <input type="text" class="form-control" id="firstName" placeholder="Por Precio" value="" required>
+      </div>
+      <div class="col-md-4 mb-3">
+        <input type="text" class="form-control" id="lastName" placeholder="Por zona" value="" required>
+      </div>
+      <div class="col-md-4 mb-3">
+        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Buscar</button>
+      </div>
+    </div>
+</form>
+
+<div class="row">
+    <div class="col-4">
+		<div class="card">
+		  <img class="card-img-top" src="https://i.ibb.co/wKFVY5b/depa1.jpg" alt="Card image cap">
+		  <div class="card-body">
+		    <h5 class="card-title">Departamento1</h5>
+		    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+		    <a href="/static/detalledepartamento" class="btn btn-primary">Ir</a>
+		  </div>
+		</div>
+	</div>
+	<div class="col-4">
+		<div class="card">
+		  <img class="card-img-top" src="https://i.ibb.co/rdX0cCQ/depa2.jpg" alt="Card image cap">
+		  <div class="card-body">
+		    <h5 class="card-title">Departamento2</h5>
+		    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+		    <a href="/static/detalledepartamento" class="btn btn-primary">Ir</a>
+		  </div>
+		</div>
+	</div>
+	<div class="col-4">
+		<div class="card">
+		  <img class="card-img-top" src="https://i.ibb.co/QHHT9b2/depa3.jpg" alt="Card image cap">
+		  <div class="card-body">
+		    <h5 class="card-title">Departamento3</h5>
+		    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+		    <a href="/static/detalledepartamento" class="btn btn-primary">Ir</a>
+		  </div>
+		</div>
+	</div>
+</div>
+<br>
+<a href="/static/services" class="btn btn-outline-primary">Regresar</a>

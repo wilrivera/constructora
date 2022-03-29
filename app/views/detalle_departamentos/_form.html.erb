@@ -1,0 +1,103 @@
+ 
+ <div class="actions" align="center">
+    <%= f.submit "Guardar Detalles", :class => "btn btn-success"  %>
+  </div>  
+
+  <div class="field">
+    <h3><%= f.label :departamento, "Departamento:" %>
+    <strong><%= f.object.departamento.numdpto %></strong></h3>
+  </div>
+
+  <% @detalle_departamento.fotos.each do |foto| %>
+   <%= hidden_field :@detalle_departamento, :fotos, multiple: true, value: foto.identifier %>
+  <% end %>
+  <%= f.file_field :fotos, multiple: true %>
+
+
+  <div class="field">
+    <br>
+    <%= f.label :supTotal %>
+    <%= f.number_field :supTotal, { :class => "form-control form-control-lg form-control-a", :placeholder => "Superficie Total" } %>
+  </div>
+
+  <div class="field">
+    <%= f.label :supTechada %>
+    <%= f.number_field :supTechada, { :class => "form-control form-control-lg form-control-a", :placeholder => "Superficie Techada" } %>
+  </div>
+
+  <div class="field">
+    <%= f.label :banios %>
+    <%= f.number_field :banios, { :class => "form-control form-control-lg form-control-a", :placeholder => "Baños" } %>
+  </div>
+
+  <div class="field">
+    <%= f.label :estacionamiento %>
+    <%= f.number_field :estacionamiento, { :class => "form-control form-control-lg form-control-a", :placeholder => "Estacionamientos" } %>
+  </div>
+
+  <div class="field">
+    <%= f.label :banioServicio %>
+    <%= f.number_field :banioServicio, { :class => "form-control form-control-lg form-control-a", :placeholder => "Baño de Servicio" } %>
+  </div>
+
+  <div class="field">
+    <%= f.label :closet  %>
+    <%= f.check_box :closet, { :class => "checkbox", :placeholder => "Closet" } %>
+  </div>
+
+  <div class="field">
+    <%= f.label :recepcion %>
+    <%= f.check_box :recepcion, { :class => "checkbox", :placeholder => "Recepción" } %>
+  </div>
+
+  <div class="field">
+    <%= f.label :condominio %>
+    <%= f.check_box :condominio, { :class => "checkbox", :placeholder => "Condominio" } %>
+  </div>
+
+  <div class="field">
+    <%= f.label :centroComercial %>
+    <%= f.check_box :centroComercial, { :class => "checkbox", :placeholder => "Cerca a Centro Comercial" } %>
+  </div>
+
+  <div class="field">
+    <%= f.label :cercaColegio %>
+    <%= f.check_box :cercaColegio, { :class => "checkbox", :placeholder => "Cerca a Colegio" } %>
+  </div>
+
+  <div class="field">
+    <%= f.label :parque %>
+    <%= f.check_box :parque, { :class => "checkbox", :placeholder => "Cerca a parque" } %>
+  </div>
+
+  <div class="field">
+    <%= f.label :intercomunicador %>
+    <%= f.check_box :intercomunicador, { :class => "checkbox", :placeholder => "Intercomunicador" } %>
+  </div>
+
+  <div class="field">
+    <%= f.label :ascensores %>
+    <%= f.number_field :ascensores, { :class => "form-control form-control-lg form-control-a", :placeholder => "Ascensores" } %>
+  </div>
+
+  <div class="field">
+    <%= f.label :ambientes %>
+    <%= f.number_field :ambientes, { :class => "form-control form-control-lg form-control-a", :placeholder => "N° Ambientes" } %>
+  </div>
+
+  <div class="field">
+    <%= f.label :descambientes %>
+    <%= f.text_field :descambientes, { :class => "form-control form-control-lg form-control-a", :placeholder => "Ambientes" } %>
+  </div>
+
+  <div class="field">
+    <%= f.label :ubicacion %>
+    <%= f.text_field :ubicacion, { :class => "form-control form-control-lg form-control-a", :placeholder => "Ubicación" } %>
+  </div>
+
+
+   <div class="actions" align="center">
+    <%= f.submit "Guardar Detalles", :class => "btn btn-success"  %>
+  </div>  
+
+   <%#= render 'errors', object: fotos %>

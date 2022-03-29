@@ -1,0 +1,64 @@
+<%= form_with(model: usuario, local: true) do |form| %>
+  <% if usuario.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(usuario.errors.count, "error") %> prohibited this usuario from being saved:</h2>
+
+      <ul>
+        <% usuario.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="form row">
+  <div class="form-group col-md-6">
+    <label for="inputDNI">DNI</label>
+    <%= form.text_field :dni , :class => "form-control", :placeholder => "Ingrese su número de DNI" %>
+  </div>
+  </div>
+
+  <div class="form row">
+  <div class="form-group col-md-6">
+    <label for="inputNombres">Nombres</label>
+    <%= form.text_field :nombres , :class => "form-control", :placeholder => "Ingrese su nombre completo" %>
+  </div>
+  </div>
+
+  <div class="form row">
+  <div class="form-group col-md-6">
+    <label for="inputApellidos">Apellidos</label>
+    <%= form.text_field :apellidos , :class => "form-control", :placeholder => "Ingrese su primer y segundo apellido" %>
+  </div>
+  </div>
+
+  <div class="form row">
+  <div class="form-group col-md-6">
+    <label for="inputPerfil">Perfil</label>
+    <%= form.select :perfil, options_from_collection_for_select(UserProfile.all, :id, :descripcion) , { :include_blank => "Seleccione" }, { :class => "form-control" } %>
+  </div>
+  </div>
+
+  <div class="form row">
+  <div class="form-group col-md-6">
+    <label for="inputEmail">Email</label>
+    <%= form.text_field :email , :class => "form-control", :placeholder => "Ingrese su correo electronico" %>
+  </div>
+  </div>
+
+  <div class="form row">
+  <div class="form-group col-md-6">
+    <label for="inputPassword">Contraseña</label>
+    <%= form.text_field :password , :type => "password" , :class => "form-control", :placeholder => "Ingrese su contraseña" %>
+  </div>
+  </div>
+
+  <br/>
+
+  <div class="form row">
+  <div class="form-group col-md-6">
+    <%= form.submit "Guardar" , :class => "btn btn-success btn-lg" %>
+    <%= link_to 'Cancelar', usuarios_path , :class => "btn btn-danger btn-lg" %>
+  </div>
+  </div>
+<% end %>

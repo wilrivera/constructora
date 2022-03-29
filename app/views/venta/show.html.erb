@@ -1,0 +1,72 @@
+<p id="notice"><%= notice %></p>
+
+    <section class="intro-single">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-12 col-lg-8">
+            <div class="title-single-box">
+              <h1 class="title-single">Venta Registrada</h1>
+              <span class="color-text-a">Por favor revise los datos de la venta</span>
+            </div>
+          </div>
+          <div class="col-md-12 col-lg-4">
+            <nav aria-label="breadcrumb" class="breadcrumb-box d-flex justify-content-lg-end">
+              <ol class="breadcrumb">
+                <li class="breadcrumb-item">
+                  <%= link_to 'Editar', edit_ventum_path(@ventum) , :class => "btn btn-light" %>
+                </li>
+                <li class="breadcrumb-item active" aria-current="page">
+                  <%= link_to 'Atrás', venta_path , :class => "btn btn-light" %>
+                </li>
+              </ol>
+            </nav>
+          </div>
+        </div>
+      </div>
+    </section>
+
+<h2>
+  <strong>Cliente:</strong>
+  <%= @ventum.cliente %>
+</h2>
+
+<h2>
+  <strong>Forma de Pago:</strong>
+  <%= FormaPago.select(:name).where("id in (" + @ventum.formaPago.to_s + ")").collect(&:name)[0] %>
+</h2>
+
+<h2>
+  <strong>Departamento:</strong>
+  <%= Departamento.select(:descripcion).where("id in (" + @ventum.dpto.to_s + ")").collect(&:descripcion)[0] %>
+</h2>
+
+<h2>
+  <strong>Precio:</strong>
+  <%= @ventum.precio %>
+</h2>
+
+<h2>
+  <strong>Banco:</strong>
+  <%= Banco.select(:name).where("id in (" + @ventum.banco.to_s + ")").collect(&:name)[0] %>
+</h2>
+
+<h2>
+  <strong>Nro. Cta. Origen:</strong>
+  <%= @ventum.nroCtaOrigen %>
+</h2>
+
+<h2>
+  <strong>Monto Abonado:</strong>
+  <%= @ventum.montoAbonado %>
+</h2>
+
+<h2>
+  <strong>Monto Dscto:</strong>
+  <%= @ventum.montoDscto %>
+</h2>
+
+<h2>
+  <strong>Monto A Pagar:</strong>
+  <%= @ventum.montoPagar %>
+</h2>
+

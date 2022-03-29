@@ -1,0 +1,100 @@
+<%= form_with(model: ventum, local: true) do |form| %>
+  <% if ventum.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(ventum.errors.count, "error") %> prohibited this ventum from being saved:</h2>
+
+      <ul>
+        <% ventum.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="form row">
+  <div class="form-group col-md-3">
+    <label for="inputDNICliente">DNI</label>
+    <%= form.text_field :DNIcliente , :class => "form-control", :placeholder => "Ingrese el DNI del cliente" %>
+  </div>
+   <div class="form-group col-md-6">
+    <label for="inputCliente">Cliente</label>
+    <%= form.text_field :cliente , :class => "form-control", :placeholder => "Ingrese el nombre completo del cliente" %>
+  </div>
+  </div>
+
+  <div class="form row">
+  <div class="form-group col-md-3">
+    <label for="inputformaPago">Forma de Pago</label>
+    <%= form.select :formaPago, options_from_collection_for_select(FormaPago.all, :id, :name) , { :include_blank => "Seleccione" }, { :class => "form-control" } %>
+  </div>
+  <div class="form-group col-md-6">
+    <label for="inputDpto">Departamento</label>
+    <%= form.select :dpto, options_from_collection_for_select(Departamento.all, :id, :descripcion) , { :include_blank => "Seleccione" }, { :class => "form-control" } %>
+  </div>
+  </div>
+
+  <div class="form row">
+  <div class="form-group col-md-3">
+    <label for="inputPrecio">Precio</label>    
+    <%= form.text_field :precio , :class => "form-control"  %>    
+  </div>
+  <div class="form-group col-md-6">
+    <label for="inputBanco">Banco</label>
+    <%= form.select :banco, options_from_collection_for_select(Banco.all, :id, :name) , { :include_blank => "Seleccione" }, { :class => "form-control" } %>
+  </div>
+  </div>
+
+  <div class="form row">
+  <div class="form-group col-md-3">
+    <label for="inputnroCtaOrigen">Nro Cta Origen</label>    
+    <%= form.text_field :nroCtaOrigen , :class => "form-control"  %>
+  </div>
+  <div class="form-group col-md-3">
+  <label for="inputmontoAbonado">Monto Abonado</label> 
+  <div class="input-group mb-3">
+    <div class="input-group-prepend">
+      <span class="input-group-text">$</span>
+    </div>
+    <%= form.text_field :montoAbonado , :class => "form-control"   %>
+    <div class="input-group-append">
+      <span class="input-group-text">.00</span>
+    </div>
+  </div>
+  </div>
+  </div>
+
+  <div class="form row">
+  <div class="form-group col-md-3">
+    <label for="inputmontoDscto">Monto de Descuento</label>    
+    <div class="input-group mb-3">
+    <div class="input-group-prepend">
+      <span class="input-group-text">$</span>
+    </div>
+    <%= form.text_field :montoDscto , :class => "form-control"   %>
+    <div class="input-group-append">
+      <span class="input-group-text">.00</span>
+    </div>
+  </div>
+  </div>
+  <div class="form-group col-md-3">
+  <label for="inputmontoAbonado">Monto A Pagar</label> 
+  <div class="input-group mb-3">
+    <div class="input-group-prepend">
+      <span class="input-group-text">$</span>
+    </div>
+    <%= form.text_field :montoPagar , :class => "form-control"   %>
+    <div class="input-group-append">
+      <span class="input-group-text">.00</span>
+    </div>
+  </div>
+  </div>
+  </div>
+
+
+  <div class="form row">
+  <div class="form-group col-md-6">
+    <%= form.submit "Guardar" , :class => "btn btn-success btn-lg" %>
+    <%= link_to 'Cancelar', venta_path , :class => "btn btn-danger btn-lg" %>
+  </div>
+  </div>
+<% end %>

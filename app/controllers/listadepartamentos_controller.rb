@@ -1,0 +1,7 @@
+class ListadepartamentosController < ApplicationController
+
+  
+
+
+ 
+end
